@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
 :root {
+	--font-size: 16px;
 	--ratio: 0;
+	--primary-font: "Alfa Slab One", cursive;
+	--primary-color: red;
+	--secondary-color: orange;
+	--tertiary-color: green;
 }
 
 * {
@@ -8,27 +15,77 @@
 	padding: 0;
 }
 
-// body,
-// html {
-// 	height: 100%;
-// 	margin: 0;
-// 	overflow: hidden;
-// }
-
 body {
-	height: 100%;
+	font-family: var(--primary-font);
+}
+
+main {
 	display: grid;
 	gap: 2rem;
-	width: 600px;
+}
+
+h1 {
+	font-family: var(--primary-font);
+	font-size: 5rem;
+}
+
+.status {
+	text-align: center;
+}
+
+.status-box {
 	margin: auto;
-	padding: 3rem;
-	justify-items: center;
+	border: 10px solid black;
+	padding: 1rem;
+	width: 900px;
+}
+
+.message {
+	text-align: center;
+	transition: all 1s ease-in-out;
+}
+
+.sub-heading {
+	font-family: var(--primary-font);
+}
+
+.page-header {
+	display: flex;
 	place-content: center;
+	align-items: center;
+	height: 20vh;
+	text-transform: uppercase;
+}
+
+.main-header {
+	margin: auto;
+	border: 10px solid black;
+	padding: 1rem;
+	width: 500px;
+	text-align: center;
+	padding: 2rem;
+}
+
+.wrapper {
+	height: 100vh;
+	// display: grid;
+	// gap: 2rem;
+	background-color: white;
+	transition: 1s all ease-in-out;
+}
+
+.visual-wrapper {
+	display: grid;
+	// margin: auto;
+	// place-content: center;
+	// align-items: center;
+	width: 100vw;
 }
 
 #visualizer {
-	height: 3rem;
+	margin: auto;
+	height: 5rem;
 	background-color: red;
-	border: 5px solid black;
+	// border: 5px solid black;
 	transition: width 2s;
 }

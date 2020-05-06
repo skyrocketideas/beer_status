@@ -1,4 +1,5 @@
 "use strict";
+import anime from "animejs/lib/anime.es.js";
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -16,11 +17,19 @@ function start() {
 	// console.log("start");
 	let visualizer = document.querySelector("#visualizer");
 	visualizer.style.setProperty("--ratio", 0);
+	anime();
 }
 
 const looper = setInterval(() => {
 	getData();
 }, 5000);
+
+anime({
+	targets: "div",
+	opacity: [0, 1],
+	duration: 500,
+	delay: anime.stagger(300),
+});
 
 // get data from API
 async function getData() {
@@ -46,25 +55,31 @@ function makeObject(data) {
 
 // append to DOM
 function showObject(myObject) {
-	document.querySelector("h2").textContent = myObject.loggedAt;
-	document.querySelector("h3").textContent = myObject.inQueue;
+	document.querySelector(".queue-number").textContent = myObject.inQueue;
 	// console.log(myObject.loggedAt);
 	let ratio = myObject.inQueue;
 	console.log(`ratio is ${ratio}`);
 	let visualizer = document.querySelector("#visualizer");
 	// visualizer.style.setProperty("--ratio", ratio);
-	visualizer.style.width = ratio * 5 + "%";
+	// visualizer.style.width = ratio * 2 + "%";
+	visualizer.style.width = (ratio / 25) * 100 + "%";
 	if (ratio <= 5) {
-		console.log("Beer Time!");
-		document.querySelector("h4").textContent = "Beer Time!";
-		visualizer.style.backgroundColor = "blue";
+		console.log("Miller time!");
+		document.querySelector(".message").textContent = "Miller time!";
+		document.querySelector(".message").style.color = "white";
+		visualizer.style.backgroundColor = "white";
+		document.querySelector(".wrapper").style.backgroundColor = "var(--primary-color)";
 	} else if (ratio > 5 && ratio < 10) {
 		console.log("Wait a while ...");
-		visualizer.style.backgroundColor = "yellow";
-		document.querySelector("h4").textContent = "Wait a while";
+		visualizer.style.backgroundColor = "var(--secondary-color)";
+		document.querySelector(".message").textContent = "Hold your horses";
+		document.querySelector(".message").style.color = "var(--secondary-color)";
+		document.querySelector(".wrapper").style.backgroundColor = "white";
 	} else if (ratio > 10) {
 		console.log("Leave it");
-		visualizer.style.backgroundColor = "red";
-		document.querySelector("h4").textContent = "Leave it";
+		visualizer.style.backgroundColor = "var(--primary-color)";
+		document.querySelector(".message").textContent = "Don't bother";
+		document.querySelector(".message").style.color = "var(--primary-color)";
+		document.querySelector(".wrapper").style.backgroundColor = "white";
 	}
 }
