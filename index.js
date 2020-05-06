@@ -13,33 +13,24 @@ const objectOne = {
 };
 
 function start() {
-	console.log("start");
-	getData();
+	// console.log("start");
+	let visualizer = document.querySelector("#visualizer");
+	visualizer.style.setProperty("--ratio", 0);
+	// getData();
 }
 
-// delay loop
-const delayLoop = (fn, delay) => {
-	return (x, i) => {
-		setTimeout(() => {
-			fn(x);
-		}, i * delay);
-	};
-};
+const handler = setInterval(() => {
+	getData();
+}, 10000);
 
 // get data from API
 async function getData() {
-	console.log("getData");
+	// console.log("getData");
 	const api_url = "https://kea-alt-del.dk/kata-distortion/";
 	const response = await fetch(api_url);
 	const data = await response.json();
 	console.log(data);
 	makeObject(data);
-	// data.forEach((element) => {
-	// 	makeObject(element);
-	// });
-	// allObjects.forEach(showObject);
-	// allObjects.forEach(delayLoop(showObject, 300));
-	// showObject(allObjects);
 }
 
 // make object
@@ -58,7 +49,17 @@ function makeObject(data) {
 function showObject(myObject) {
 	document.querySelector("h2").textContent = myObject.loggedAt;
 	document.querySelector("h3").textContent = myObject.inQueue;
-	console.log(myObject.loggedAt);
+	// console.log(myObject.loggedAt);
+	let ratio = myObject.inQueue;
+	console.log(`ratio is ${ratio}`);
+	let visualizer = document.querySelector("#visualizer");
+	// visualizer.style.setProperty("--ratio", ratio);
+	visualizer.style.width = ratio * 2 + "%";
+	if (ratio < 10) {
+		console.log("Beer Time!");
+	} else {
+		console.log("Wait a while ...");
+	}
 }
 
 // console.log(myObject);

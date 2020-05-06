@@ -1,0 +1,17 @@
+:root {
+	--ratio: 0;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#visualizer {
+	height: 3rem;
+	background-color: red;
+	width: 0%;
+	// width: calc(var(--ratio) * -100%);
+	transition: width 2s;
+}
