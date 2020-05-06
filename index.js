@@ -16,12 +16,11 @@ function start() {
 	// console.log("start");
 	let visualizer = document.querySelector("#visualizer");
 	visualizer.style.setProperty("--ratio", 0);
-	// getData();
 }
 
 const looper = setInterval(() => {
 	getData();
-}, 10000);
+}, 5000);
 
 // get data from API
 async function getData() {
@@ -54,12 +53,18 @@ function showObject(myObject) {
 	console.log(`ratio is ${ratio}`);
 	let visualizer = document.querySelector("#visualizer");
 	// visualizer.style.setProperty("--ratio", ratio);
-	visualizer.style.width = ratio * 2 + "%";
-	if (ratio < 10) {
+	visualizer.style.width = ratio * 5 + "%";
+	if (ratio <= 5) {
 		console.log("Beer Time!");
-	} else {
+		document.querySelector("h4").textContent = "Beer Time!";
+		visualizer.style.backgroundColor = "blue";
+	} else if (ratio > 5 && ratio < 10) {
 		console.log("Wait a while ...");
+		visualizer.style.backgroundColor = "yellow";
+		document.querySelector("h4").textContent = "Wait a while";
+	} else if (ratio > 10) {
+		console.log("Leave it");
+		visualizer.style.backgroundColor = "red";
+		document.querySelector("h4").textContent = "Leave it";
 	}
 }
-
-// console.log(myObject);

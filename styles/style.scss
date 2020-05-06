@@ -8,9 +8,27 @@
 	padding: 0;
 }
 
+// body,
+// html {
+// 	height: 100%;
+// 	margin: 0;
+// 	overflow: hidden;
+// }
+
+body {
+	height: 100%;
+	display: grid;
+	gap: 2rem;
+	width: 600px;
+	margin: auto;
+	padding: 3rem;
+	justify-items: center;
+	place-content: center;
+}
+
 #visualizer {
 	height: 3rem;
 	background-color: red;
-	width: 0%;
+	border: 5px solid black;
 	transition: width 2s;
 }
