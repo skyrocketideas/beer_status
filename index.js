@@ -19,7 +19,7 @@ function start() {
 	// getData();
 }
 
-const handler = setInterval(() => {
+const looper = setInterval(() => {
 	getData();
 }, 10000);
 
