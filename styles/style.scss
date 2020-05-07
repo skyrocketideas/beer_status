@@ -17,6 +17,24 @@
 
 body {
 	font-family: var(--primary-font);
+	overflow: hidden;
+}
+
+.wrapper {
+	height: 100vh;
+	position: relative;
+	// display: grid;
+	// gap: 2rem;
+	background-color: white;
+	transition: 1s all ease-in-out;
+	overflow: hidden;
+	opacity: 1;
+}
+
+.fadeWrap {
+	opacity: 0.2;
+	transition: 1s all ease-in-out;
+	overflow: hidden;
 }
 
 main {
@@ -26,7 +44,7 @@ main {
 
 h1 {
 	font-family: var(--primary-font);
-	font-size: 5rem;
+	font-size: 3rem;
 }
 
 .status {
@@ -37,12 +55,43 @@ h1 {
 	margin: auto;
 	border: 10px solid black;
 	padding: 1rem;
-	width: 900px;
+	width: 75vw;
 }
 
 .message {
 	text-align: center;
+}
+
+.message.fade {
+	animation: fadeAnim all 2s ease-in-out;
+}
+
+.beer {
+	position: absolute;
+	transform: translateY(70vh);
+	opacity: 1;
 	transition: all 1s ease-in-out;
+}
+
+.beer.rise {
+	position: absolute;
+	transform: translateY(-80vh);
+	transition: all 1s ease-in-out;
+	opacity: 1;
+}
+
+@keyframes fadeAnim {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 
 .sub-heading {
@@ -61,17 +110,9 @@ h1 {
 	margin: auto;
 	border: 10px solid black;
 	padding: 1rem;
-	width: 500px;
+	width: 50vw;
 	text-align: center;
 	padding: 2rem;
-}
-
-.wrapper {
-	height: 100vh;
-	// display: grid;
-	// gap: 2rem;
-	background-color: white;
-	transition: 1s all ease-in-out;
 }
 
 .visual-wrapper {
